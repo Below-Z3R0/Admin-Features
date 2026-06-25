@@ -1,0 +1,20 @@
+import { AcademyCardSkeleton } from "../../scheletons";
+
+export function AcademySectionSkeleton() {
+  return (
+    <section className="py-20 bg-page animate-pulse">
+      <div className="max-w-7xl content-container">
+        <header>
+          <div className="h-4 w-32 bg-border-mid rounded mb-4" />
+          <div className="h-12 w-64 bg-border-mid rounded mb-10" />
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+          {[1, 2, 3].map((i) => (
+            <AcademyCardSkeleton key={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

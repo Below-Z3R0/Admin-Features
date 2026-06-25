@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fondos y Superficies */
+  --color-Theme: var(--bg-Theme);
+  --color-page: var(--bg-page);
+  --color-card: var(--bg-card);
+  --color-surface: var(--bg-surface);
+  --color-hover: var(--bg-hover);
+
+  /* Colores de Texto */
+  --color-main: var(--text-main);
+  --color-dim: var(--text-body);
+  --color-muted: var(--text-muted);
+  --color-footer: var(--text-footer);
+
+  /* Colores de Acento */
+  --color-accent: var(--accent);
+  --color-accent-mid: var(--accent-mid);
+  --color-accent-light: var(--accent-light);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-alt: var(--accent-alt);
+
+  /* Bordes y Sombras */
+  --color-border-subtle: var(--border-subtle);
+  --color-border-mid: var(--border-mid);
+  --color-border-glow: var(--border-glow);
+
+  /* Radios de Borde (Border Radius) */
+  --radius-r: var(--r);
+  --radius-r-lg: var(--r-lg);
+  --radius-r-xl: var(--r-xl);
+
+  /* Tipografía y Breakpoints */
+  --breakpoint-qw: 921px;
+  --breakpoint-ew: 700px;
+  --breakpoint-ww: 640px;
+
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-sans: var(--font-sans), Inter, Aptos, Helvetica, Arial, sans-serif;
+}
+
+/* --- PALETA MODERNA: LIGHT cálido + DARK sofisticado --- */
+
+.light {
+  /* FONDOS: Tonos cálidos y suaves con personalidad */
+  --bg-page: #FAF8F5;         /* Crema cálido muy suave - base principal */
+  --bg-card: #FFFFFE;          /* Blanco cálido con un toque ivory */
+  --bg-surface: #F3EFE8;       /* Beige muy sutil para superficies */
+  --bg-hover: #EDE7DC;         /* Hover cálido más profundo */
+  --bg-Theme: #F7F4EE;         /* Tema beige claro */
+
+  /* TEXTO: Tonos cálidos y legibles */
+  --text-main: #2A2520;        /* Café oscuro elegante */
+  --text-body: #5A5249;        /* Café medio para texto */
+  --text-muted: #9A8E80;       /* Taupe cálido para texto secundario */
+  --text-footer: #5A5249;
+
+  /* ACENTOS: Indigo y Violet con un poco más de calidez */
+  --accent: #5B5BD6;           /* Indigo ligeramente más cálido */
+  --accent-mid: #7C3AED;       /* Violet vibrante */
+  --accent-light: #A78BFA;     /* Violet claro */
+  --accent-soft: rgba(91, 91, 214, 0.08);
+  --accent-alt: #4F46E5;       /* Indigo profundo para hover */
+
+  /* BORDES: Tonos cálidos suaves */
+  --border-subtle: #EFE9DD;    /* Beige muy claro */
+  --border-mid: #E5DDD0;       /* Beige un poco más marcado */
+  --border-glow: rgba(91, 91, 214, 0.15);
+
+  /* FONDO DECORATIVO */
+  --bg-grid: rgba(42, 37, 32, 0.025);
+  --bg-blob-1: rgba(91, 91, 214, 0.08);
+  --bg-blob-2: rgba(124, 58, 237, 0.06);
+  --bg-blob-3: rgba(167, 139, 250, 0.05);
+
+  /* Radios más redondeados y modernos */
+  --r: 6px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+}
+
+.dark {
+  /* FONDOS: Profundos y sofisticados */
+  --bg-page: #0F172A;
+  --bg-card: #1E293B;
+  --bg-surface: #334155;
+  --bg-hover: #475569;
+  --bg-Theme: #1E293B;
+
+  /* TEXTO: Legibles sobre fondos oscuros */
+  --text-main: #F8FAFC;
+  --text-body: #94A3B8;
+  --text-muted: #64748B;
+  --text-footer: #94A3B8;
+
+  /* ACENTOS: Indigo y Violet claros */
+  --accent: #818CF8;
+  --accent-mid: #A78BFA;
+  --accent-light: #C4B5FD;
+  --accent-soft: rgba(129, 140, 248, 0.12);
+  --accent-alt: #6366F1;
+
+  /* BORDES: Slates oscuros */
+  --border-subtle: #1E293B;
+  --border-mid: #334155;
+  --border-glow: rgba(129, 140, 248, 0.15);
+
+  /* FONDO DECORATIVO */
+  --bg-grid: rgba(248, 250, 252, 0.025);
+  --bg-blob-1: rgba(129, 140, 248, 0.1);
+  --bg-blob-2: rgba(167, 139, 250, 0.08);
+  --bg-blob-3: rgba(196, 181, 253, 0.06);
+
+  /* Radios consistentes */
+  --r: 6px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+}
+
+.content-container {
+  margin-inline: auto;
+  padding-inline: calc(var(--spacing) * 6);
+
+  @media (width >=48rem
+    /* 768px */
+  ) {
+    padding-inline: calc(var(--spacing) * 12)
+      /* 3rem = 48px */
+    ;
+  }
+}
+
+input {
+  --tw-outline-style: none;
+  outline-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* --- PATRONES Y UTILIDADES DE FONDO --- */
+
+/* Grid pattern sutil reutilizable */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: -1px -1px;
+}
+
+/* Máscara radial para que el grid se desvanezca en los bordes */
+.bg-grid-mask {
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 50%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 50%, transparent 100%);
+}
+
+/* Animaciones muy lentas para los blobs */
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-30px, 30px) scale(1.1); }
+  66% { transform: translate(20px, -30px) scale(0.95); }
+}
+
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, 30px) scale(1.08); }
+}
+
+.animate-blob-1 {
+  animation: blob-drift-1 25s ease-in-out infinite;
+}
+
+.animate-blob-2 {
+  animation: blob-drift-2 30s ease-in-out infinite;
+}
+
+.animate-blob-3 {
+  animation: blob-drift-3 35s ease-in-out infinite;
+}
