@@ -1,33 +1,26 @@
 'use client';
 
-import { useEffect, useState, startTransition } from 'react';
+import { useTheme as useNextTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export type Theme = 'light' | 'dark';
 
-const STORAGE_KEY = 'theme';
-
 export function useTheme() {
-  const [theme, setThemeState] = useState<Theme>('light');
+  const { setTheme: setNextTheme, resolvedTheme } = useNextTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === 'dark' || saved === 'light') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setThemeState(saved);
-    }
+    setMounted(true);
   }, []);
 
-  useEffect(() => {
-    const root = window.document.documentElement;
-    startTransition(() => {
-      root.classList.remove('dark', 'light');
-      root.classList.add(theme);
-      root.style.colorScheme = theme;
-    });
-    localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme]);
+  const currentTheme: Theme =
+    mounted && (resolvedTheme === 'dark' || resolvedTheme === 'light')
+      ? resolvedTheme
+      : 'dark';
 
-  const setTheme = (newTheme: Theme) => setThemeState(newTheme);
+  const setTheme = (newTheme: Theme) => {
+    setNextTheme(newTheme);
+  };
 
-  return { theme, setTheme };
+  return { theme: currentTheme, setTheme };
 }
