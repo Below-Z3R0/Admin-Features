@@ -1,6 +1,8 @@
+import { createClient } from "@/utils/supabase/server";
 import { getContent } from "./sections/content.service";
 
 export const getCardsData = async (lang: string = 'es') => {
+    const supabase = await createClient();
     const [
         DiffMetricData,
         PersonCardData,
@@ -17,20 +19,20 @@ export const getCardsData = async (lang: string = 'es') => {
         AcademyArticlesData,
         CtaFormData
     ] = await Promise.all([
-        getContent('differentiator_article', lang),
-        getContent('personas_article', lang),
-        getContent('ipmmethod_article', lang),
-        getContent('ipmscore_statescard', lang),
-        getContent('ipmscore_dimensions',lang),
-        getContent('ipmscore_quote',lang),
-        getContent('messages_messages',lang),
-        getContent('servicesdesks_services',lang),
-        getContent('trackrecord_sectors',lang),
-        getContent('trackrecord_metrics',lang), 
-        getContent('trackrecord_growth',lang),
-        getContent('ethics_article',lang),
-        getContent('academy_articles',lang),
-        getContent('cta_form',lang),
+        getContent(supabase, 'differentiator_article', lang),
+        getContent(supabase,'personas_article', lang),
+        getContent(supabase,'ipmmethod_article', lang),
+        getContent(supabase,'ipmscore_statescard', lang),
+        getContent(supabase,'ipmscore_dimensions', lang),
+        getContent(supabase,'ipmscore_quote', lang),
+        getContent(supabase,'messages_messages', lang),
+        getContent(supabase,'servicesdesks_services', lang),
+        getContent(supabase,'trackrecord_sectors', lang),
+        getContent(supabase,'trackrecord_metrics', lang),
+        getContent(supabase,'trackrecord_growth', lang),
+        getContent(supabase,'ethics_article', lang),
+        getContent(supabase,'academy_articles', lang),
+        getContent(supabase,'cta_form', lang),
     ])
     return {
         DiffMetricData,
