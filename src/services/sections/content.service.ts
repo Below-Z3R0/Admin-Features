@@ -1,8 +1,6 @@
-import { createClient } from "@/utils/supabase/server";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
-export const getContent = async (section: string, language: string = 'es') => {
-    const supabase = await createClient();
-    
+export const getContent = async (supabase: SupabaseClient, section: string, language: string = 'es') => {
     const { data, error } = await supabase
         .rpc('get_translation_by_key', { 
             block_key: section, 

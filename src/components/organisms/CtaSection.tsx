@@ -1,5 +1,5 @@
 import { FadeUp } from '../animations/Animations';
-import { Mail, ArrowRight } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { CtaForm } from '../client-components';
 import { LinkButton, Paragraph, Span, Title2 } from '../server-components';
 import { CtaSectionProps } from '../types';
